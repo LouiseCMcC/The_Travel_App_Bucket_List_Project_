@@ -1,0 +1,43 @@
+<header id="my_visited_cities_header">My Visited Cities.</h1>
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <nav>
+      <ul class="menu">
+        <li><a id="city_link_on_visited_cities" href="/cities">Cities</a></li>
+        <li><a id="unvisited_cities_link_on_visited_cities" href="/cities/unvisited">Unvisited Cities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+{% for city in cities %}
+  {% if city.visited == True %}
+  <div class="city">
+    <div id="cities_in_visited_cities" class="content">
+      City:
+      <a id="city_name_url_in_visited_cities" href="/cities/{{city.id}}">{{city.city_name}}</a>
+      <div class="country">
+          Country: {{city.country.country_name}}
+          
+          <div class="visited">
+            Visited: {% if city.visited == True %}
+            <span> &#10004; </span>
+            {% else %}
+            <span> &#10006; </span>
+            {% endif %}
+          </div>
+
+          <div class="sights">
+            <a id="sight_name_url_in_visited_cities" href="{{city.id}}/sights">Sights</a>
+          </div>
+
+              <form class="delete-form" action="/cities/{{city.id}}/delete" method="POST">
+                <button class="trash-button"></button>
+              </form>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+{% endblock %}
+</body>

@@ -1,0 +1,44 @@
+<header id="visited_countries_header">My Visited Countries.</header>
+{% extends "base.html" %}
+{% block content %}
+<body>
+  <header>
+    <nav>
+      <ul class="menu">
+        <li><a id="countries_visited_countries_link" href="/countries">Countries</a></li>
+        <li><a id="countries_unvisited_countries_link" href="/countries/unvisited">Unvisited Countries</a></li>
+      </ul>
+    </nav>
+  </header>
+
+{% for country in countries %}
+  {% if country.visited == True %}
+
+  <div class="country">
+    <div id="visited_countries_countries" class="content">
+      Country: 
+      <a id="visited_countries_countries_url" href="/countries/{{country.id}}">{{country.country_name}}</a>
+      <div id="visited_countries_continent" class="continent">
+        Continent: {{country.continent}}
+
+        <div id="visited_countries_visited" class="visited">
+          Visited: {% if country.visited == True %}
+          <span> &#10004; </span>
+          {% else %}
+          <span> &#10006; </span>
+          {% endif %}
+        </div>
+
+              <div class="buttons">
+              <form class="delete-form" action="/countries/{{country.id}}/delete" method="POST">
+                <button class="trash-button"></button>
+              </form>
+            </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+ 
+
+{% endblock %}

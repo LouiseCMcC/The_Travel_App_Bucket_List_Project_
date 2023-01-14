@@ -1,0 +1,50 @@
+<header id="unvisited_cities_header">My Unvisited Cities.</header>
+{% extends "base.html" %}
+{% block content %}
+<body>
+  <header>
+    <nav>
+      <ul class="menu">
+        <li><a id="city_link_on_unvisited_cities"href="/cities">Cities</a></li>
+        <li><a id="visited_cities_link_on_unvisited_cities"href="/cities/visited">Visited Cities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+{% for city in cities %}
+  {% if city.visited == False %}
+  <div class="city">
+    <div id="cities_in_unvisited_cities"class="content">
+      City:
+      <a id="city_name_url_on_unvisited_cities" href="/cities/{{city.id}}">{{city.city_name}}</a>
+      <div class="country">
+          Country: {{city.country.country_name}}
+       
+        <!-- <form action="/cities/{{index}}" method="POST">
+            <label for="visited">Visited? </label>
+            <input type="checkbox" id="visited" name="visited" value="true">
+            <input type="submit" value="Update">
+        </form> -->
+
+              <div class="visited">
+                Visited: {% if city.visited == True %}
+                <span> &#10004; </span>
+                {% else %}
+                <span> &#10006; </span>
+                {% endif %}
+              </div>
+
+              <div class="sights">
+                <a id="sight_name_url_in_visited_cities" href="{{city.id}}/sights">Sights</a>
+              </div>
+
+              <form class="delete-form" action="/cities/{{city.id}}/delete" method="POST">
+                <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
+              </form>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% endfor %}
+{% endblock %}
+</body>

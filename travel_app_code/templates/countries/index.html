@@ -1,0 +1,17 @@
+<header id="countries_header">My Countries.</header>
+{% extends "base.html" %}
+{% block content %}
+<body>
+  <header>
+    <nav>
+      <ul class="country_menu">
+        <li><a id="new_country_link" href="/countries/new">New Country</a></li>
+        <li><a id ="visited_countries_link" href="/countries/visited">Visited Countries</a></li>
+        <li><a id="unvisited_countries_link" href="/countries/unvisited">Unvisited Countries</a></li>
+      </ul>
+    </nav>
+  </header>
+
+{% endblock %}
+
+

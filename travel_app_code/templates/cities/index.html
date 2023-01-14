@@ -1,0 +1,15 @@
+<header id="cities_header">My Cities.</header>
+{% extends "base.html" %}
+{% block content %}
+<body>
+  <header>
+    <nav>
+      <ul class="city_menu">
+        <li><a id="new_city_link" href="/cities/new">New City</a></li>
+        <li><a id="visited_cities_link" href="/cities/visited">Visited Cities</a></li>
+        <li><a id="unvisited_cities_link" href="/cities/unvisited">Unvisited Cities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+{% endblock %}

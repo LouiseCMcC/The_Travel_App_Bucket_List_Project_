@@ -1,0 +1,41 @@
+<header id="edit_sight_title">Edit My Site.</header>
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/cities/sights/{{sight.id}}" method="post">
+<div>
+    <label id="edit_my_sight_name" for="sight_name">Sight: </label>
+    <input type="text" id="sight_name" name="sight_name" value="{{sight.sight_name}}">
+</div>
+
+<div>
+    <br><label id="edit_my_sight_city" for="city">City: </label>
+    <select id="city" name="city_id">
+        {% for city in cities %}
+        <option value="{{ city.id }}"
+        {% if sight.city_id == city.id %} selected="selected" {% endif %}>
+        {{ city.city_name }}
+    </option>
+    {% endfor %}
+    </select>
+</div>
+
+<div>
+    <br><label id="edit_my_sight_visited" for="visited">Visited: </label>
+    <select id="visited" name="visited">
+        
+        <option value="true"
+        {% if sight.visited == True %} selected="selected" {% endif %}>
+        True
+    </option>
+    <option value="false"
+    {% if sight.visited == False %} selected="selected" {% endif %}>
+    False
+</option>
+    </select>
+</div>
+
+<br><button id="edit_sight_button" type="submit">Update Sight</button>
+
+</form>
+{% endblock %}

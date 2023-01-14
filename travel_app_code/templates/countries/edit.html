@@ -1,0 +1,32 @@
+<header id="edit_country_header">Edit My Country.</header>
+{% extends "base.html" %}
+{% block content %}
+
+<form id="edit_my_country_name" action="/countries/{{country.id}}" method="post">
+<div>
+    <label for="country_name">Country: </label>
+    <input type="text" id="country_name" name="country_name" value="{{country.country_name}}">
+</div>
+<div>
+    <br><label for="continent">Continent: </label>
+    <input type="text" id="continent" name="continent" value="{{country.continent}}">
+</div>
+<div>
+    <br><label for="visited">Visited: </label>
+    <select id="visited" name="visited">
+        
+        <option value="true"
+        {% if country.visited == True %} selected="selected" {% endif %}>
+        True
+    </option>
+    <option value="false"
+    {% if country.visited == False %} selected="selected" {% endif %}>
+    False
+</option>
+    </select>
+</div>
+
+<br><button id="edit_country_button" type="submit">Update Country</button>
+
+</form>
+{% endblock %}
